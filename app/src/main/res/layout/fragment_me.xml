@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment_me">
+    android:orientation="vertical"
+    tools:context="com.example.myapplication.fragment.fragment_me">
 
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:id="@+id/ceshi1"
+        android:text="我的" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="变色"
+        android:id="@+id/ceshi">
 
-</FrameLayout>
+    </Button>
+</LinearLayout>
