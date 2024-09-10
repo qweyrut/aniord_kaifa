@@ -7,9 +7,10 @@
     tools:context="com.example.myapplication.fragment.fragment_me">
 
 
-    <TextView
+    <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
+        android:textSize="50dp"
         android:id="@+id/ceshi1"
         android:text="我的" />
     <Button

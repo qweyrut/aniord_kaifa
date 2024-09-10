@@ -8,25 +8,47 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
+import java.util.Scanner;
+
 //我的主页//
-public class fragment_me extends Fragment {
-    TextView ceshi1;
+public class fragment_me extends Fragment implements Runnable{
+    EditText ceshi1;
     Button ceshi;
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public static Socket socket;
+    static boolean issend=false;
+
+
+
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_me, container, false);
         ceshi=view.findViewById(R.id.ceshi);
         ceshi1=view.findViewById(R.id.ceshi1);
-        ceshi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ceshi1.setTextSize(50);
-            }
-        });
         return view;
+    }
+
+    @Override
+    public void run() {
+
+        try {
+            DataInputStream dis = new DataInputStream(socket.getInputStream());
+            while (true) {
+                String msg = dis.readUTF();
+                if (msg.equals("exit")){
+                    break;
+                }
+                System.out.println("来自服务器端的消息"+msg);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

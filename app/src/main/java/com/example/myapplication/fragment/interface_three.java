@@ -10,10 +10,15 @@ import android.view.ViewGroup;
 
 import com.example.myapplication.R;
 
-public class interface_three extends Fragment {
+public class interface_three extends Fragment implements Runnable {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_interface_three, container, false);
+    }
+
+    @Override
+    public void run() {
+
     }
 }

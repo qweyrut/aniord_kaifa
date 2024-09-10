@@ -1,14 +1,19 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import com.example.myapplication.R;
 import com.example.myapplication.fragment.fragment_me;
 import com.example.myapplication.fragment.interface_three;
 import com.example.myapplication.fragment.interface_two;
@@ -46,12 +51,17 @@ public class main_interface extends AppCompatActivity implements View.OnClickLis
 
         fragment_three_icon=findViewById(R.id.fragment_three_icon);
         fragment_three_icon.setOnClickListener(this);
-
         fragment_me_icon=findViewById(R.id.fragment_me_icon);
         fragment_me_icon.setOnClickListener(this);
-
-
         //绑定按钮事件
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_NETWORK_STATE) != PackageManager.PERMISSION_GRANTED) {
+            // 请求权限
+            ActivityCompat.requestPermissions(this, new String[]{
+                    Manifest.permission.INTERNET,
+                    Manifest.permission.ACCESS_NETWORK_STATE
+            },1);
+        }
 
 
 
