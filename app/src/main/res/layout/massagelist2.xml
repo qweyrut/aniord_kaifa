@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--自己的消息-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:gravity="right"
+    android:layout_marginBottom="20dp"
+    android:background="@color/danhuise"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:text="你好"
+        android:textAlignment="center"
+        android:background="@drawable/duihuakuang"
+        android:textSize="28dp"
+        android:id="@+id/xiaoxi">
+    </TextView>
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/zhaopian"
+        android:src="@drawable/fragment_two_icon">
+    </ImageView>
+</LinearLayout>

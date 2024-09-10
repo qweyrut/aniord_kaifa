@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".test.MainActivitytest">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/sentmessage">
+    </EditText>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/getmessage">
+    </EditText>
+    <Button
+        android:layout_width="match_parent"
+        android:text="发送"
+        android:id="@+id/send"
+        android:layout_height="50dp">
+    </Button>
+    <Button
+        android:layout_width="match_parent"
+        android:text="跳转"
+        android:id="@+id/tiaozhuan"
+        android:layout_height="50dp">
+    </Button>
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>
