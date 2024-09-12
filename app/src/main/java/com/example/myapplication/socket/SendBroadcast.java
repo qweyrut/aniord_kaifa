@@ -1,5 +1,6 @@
 package com.example.myapplication.socket;
 
+import com.example.myapplication.Application1;
 import com.example.myapplication.duixiang.udp_user;
 import com.google.gson.Gson;
 
@@ -29,7 +30,7 @@ public class SendBroadcast implements Runnable {
     public void run() {
         try {
             Gson gson = new Gson();
-            MESSAGE = gson.toJson(new udp_user("阿帅", "", "56165161681"));
+            MESSAGE = gson.toJson(new udp_user(Application1.sendname, "", Application1.senduid));
             DatagramSocket socket = new DatagramSocket();
             // 创建定时任务
             ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);

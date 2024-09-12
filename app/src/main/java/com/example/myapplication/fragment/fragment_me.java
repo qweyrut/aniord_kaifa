@@ -30,8 +30,7 @@ public class fragment_me extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_me, container, false);
-        ceshi=view.findViewById(R.id.ceshi);
-        ceshi1=view.findViewById(R.id.ceshi1);
+
         return view;
     }
 

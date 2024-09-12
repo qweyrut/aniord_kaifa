@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.example.myapplication.duixiang.Message;
 
@@ -56,13 +57,14 @@ public class chat_sqlite extends SQLiteOpenHelper {
 
         return messages; // 返回消息列表
     }
-    public void insertMessage(String senderId, String receiverId, String content) {//插入一条信息
+    public void insertMessage(Message message) {//插入一条信息
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("sender_id", senderId);
-        values.put("receiver_id", receiverId);
-        values.put("content", content);
+        values.put("sender_id", message.getSenderId());
+        values.put("receiver_id", message.getGeterId());
+        values.put("content", message.getContent());
         db.insert("messages", null, values);
+        Log.e("chat_sqlite","插入成功");
         db.close();
     }
 

@@ -15,8 +15,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.myapplication.adpter.massageadpter;
+import com.example.myapplication.duixiang.Message;
 import com.example.myapplication.duixiang.massage;
 import com.example.myapplication.socket.ChatClient;
+import com.example.myapplication.sqlite.ChatDatabaseHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Thread interface_two;
     TextView gukename;
     Bundle bundle;
-    List<massage> messages=new ArrayList<>();
+    List<Message> messages=new ArrayList<>();
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -54,13 +56,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ip=bundle.getString("ip");
         name=bundle.getString("name");
         nameid=bundle.getString("nameid");
+
+        ChatDatabaseHelper dbhp = new ChatDatabaseHelper(this);
+        dbhp.insertConversation(Application1.getname,Application1.getuid,Application1.senduid);
+
         gukename.setText(name);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         massageadpter=new massageadpter(messages);
         recyclerView.setAdapter(massageadpter);
         recyclerView.scrollToPosition(messages.size()-1);
         if (!ip.equals("")){
-            chatClient=new ChatClient(ip,8888,messages,massageadpter,recyclerView);//开启线程
+            chatClient=new ChatClient(ip,8888,messages,massageadpter,recyclerView,this);//开启线程
             new Thread(chatClient).start();//开启支线程，获取信息
         }
     }

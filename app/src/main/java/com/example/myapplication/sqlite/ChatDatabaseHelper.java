@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.example.myapplication.duixiang.GuanxiList;
 
@@ -30,14 +31,38 @@ public class ChatDatabaseHelper extends SQLiteOpenHelper {//这个数据库存�
                 "receiver_id TEXT NOT NULL)";
         db.execSQL(createConversationsTable);
     }
+    public boolean Search(String sender_id, String receiver_id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query("messages", null, null, null, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                @SuppressLint("Range") String id1 = cursor.getString(cursor.getColumnIndex("sender_id"));
+                @SuppressLint("Range") String id2 = cursor.getString(cursor.getColumnIndex("receiver_id"));
+                if ((id1.equals(sender_id) && id2.equals(receiver_id)) ||
+                        (id1.equals(receiver_id) && id2.equals(sender_id))) {
+                    cursor.close();
+                    db.close();
+                    return true; // 找到匹配的记录
+                }
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return false; // 未找到匹配的记录
+    }
     public void insertConversation(String senderName, String senderId, String receiverId) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("sender_name", senderName);  // 插入发送者姓名
-        values.put("sender_id", senderId);      // 插入发送者 ID
-        values.put("receiver_id", receiverId);  // 插入接收者 ID
-        db.insert("conversations", null, values); // 插入数据
-        db.close(); // 关闭数据库
+        if(!Search(senderId,receiverId)){
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put("sender_name", senderName);  // 插入发送者姓名
+            values.put("sender_id", senderId);      // 插入发送者 ID
+            values.put("receiver_id", receiverId);  // 插入接收者 ID
+            db.insert("conversations", null, values); // 插入数据
+            Log.e("ChatDatabaseHelper","存储成功");
+            db.close(); // 关闭数据库
+        }
     }
     public List<GuanxiList> fetchConversations() {
         List<GuanxiList> conversations = new ArrayList<>();

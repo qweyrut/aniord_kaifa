@@ -84,10 +84,10 @@
                 android:text="修改个人信息"
                 android:textSize="16sp" />
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_arrow_right" />
+<!--            <ImageView-->
+<!--                android:layout_width="24dp"-->
+<!--                android:layout_height="24dp"-->
+<!--                android:src="@drawable/ic_arrow_right" />-->
         </LinearLayout>
 
         <!-- Divider -->
@@ -117,10 +117,10 @@
                 android:text="设置"
                 android:textSize="16sp" />
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_arrow_right" />
+<!--            <ImageView-->
+<!--                android:layout_width="24dp"-->
+<!--                android:layout_height="24dp"-->
+<!--                android:src="@drawable/ic_arrow_right" />-->
         </LinearLayout>
 
         <!-- Divider -->

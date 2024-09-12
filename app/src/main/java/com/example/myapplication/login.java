@@ -1,10 +1,12 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -13,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.duixiang.userdata;
+import com.example.myapplication.sqlite.Login_inf;
 
 //67行跳转至主页面
 public class login extends AppCompatActivity {
@@ -22,13 +25,14 @@ public class login extends AppCompatActivity {
     private Button mconfirm;
     private userdata data;
     private CheckBox checkBox;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-        name = findViewById(R.id.username);
-        pass = findViewById(R.id.password);
+        name = findViewById(R.id.username123);
+        pass = findViewById(R.id.password123);
         mconfirm = findViewById(R.id.btn_confirm);
         mregister = findViewById(R.id.btn_register);
         checkBox=findViewById(R.id.cb_rm);
@@ -50,6 +54,11 @@ public class login extends AppCompatActivity {
         mconfirm.setOnClickListener(v -> {
             if(data.verifyPassword(name.getText().toString(),pass.getText().toString())&&data.search(name.getText().toString()))
             {
+                Login_inf login_inf=new Login_inf(this);
+                String uid=login_inf.getUIDByUsername(name.getText().toString());
+                Application1.senduid=uid;
+                Application1.sendname=name.getText().toString();
+                Application1.sendpassword=pass.getText().toString();
                 Intent intent=new Intent(login.this, main_interface.class);
                 saveLogin(login_state);
                 startActivity(intent);

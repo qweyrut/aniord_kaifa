@@ -1,6 +1,8 @@
 package com.example.myapplication.sqlite;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -16,6 +18,25 @@ public class Login_inf extends SQLiteOpenHelper {
         String CREATE_TABLE = "CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL, password TEXT NOT NULL,UID TEXT NOT NULL)";
         db.execSQL(CREATE_TABLE);
         Log.d("Database", "Table created successfully");
+    }
+    @SuppressLint("Range")
+    public String getUIDByUsername(String username) {//获取uid
+        SQLiteDatabase db = this.getReadableDatabase();
+        String uid = null;
+
+        // 查询的 SQL 语句
+        String query = "SELECT UID FROM users WHERE username = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{username});
+
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                uid = cursor.getString(cursor.getColumnIndex("UID"));
+            }
+            cursor.close(); // 关闭游标
+        }
+
+        db.close(); // 关闭数据库
+        return uid; // 返回 UID 或 null
     }
 
     @Override

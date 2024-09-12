@@ -1,13 +1,20 @@
 package com.example.myapplication.socket;
 
+import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.Application1;
 import com.example.myapplication.adpter.massageadpter;
+import com.example.myapplication.duixiang.Message;
 import com.example.myapplication.duixiang.massage;
+import com.example.myapplication.duixiang.udp;
+import com.example.myapplication.sqlite.chat_sqlite;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -22,17 +29,19 @@ public class ChatClient implements Runnable{
     public static  String ip;
     public  static String getmessage;//取得的消息
     public  static  RecyclerView recyclerView;
-    public static  List<massage> messages;//实现获取消息列表实例
+    public static  List<Message> messages;//实现获取消息列表实例
     public  static  massageadpter massageadpter;
+    public  Context context;
 
     public static DataOutputStream dataOutputStream;//获取到的输入实例
     public static DataInputStream dataInputStream;//获取到的输出实例
-    public ChatClient(String ip, int port,List<massage> messages,massageadpter massageadpter,RecyclerView recyclerView){//获取到ip地址和端口号
+    public ChatClient(String ip, int port, List<Message> messages, massageadpter massageadpter, RecyclerView recyclerView , Context context){//获取到ip地址和端口号
         this.ip=ip;
         this.port=port;
         this.messages=messages;
         this.massageadpter=massageadpter;
         this.recyclerView=recyclerView;
+        this.context=context;
     }
 
     public boolean connectsocket() throws IOException {//连接服务端
@@ -53,7 +62,10 @@ public class ChatClient implements Runnable{
     }
     public void sendmessage(String message){//客户端向服务端发送
         try {
-            dataOutputStream.writeUTF(message);
+            Message message1=new Message(Application1.getuid,Application1.senduid,message);
+            Gson gson=new Gson();
+            String message2=gson.toJson(message1);//发送gson文件
+            dataOutputStream.writeUTF(message2);
             dataOutputStream.flush();
         }catch (Exception e){
             throw new RuntimeException(e);
@@ -68,7 +80,6 @@ public class ChatClient implements Runnable{
     public void run() {
         while (true){
             try {
-                Thread.sleep(2000);
                 if (connectsocket()){//判断是否连接成功
                     break;
                 }
@@ -81,12 +92,15 @@ public class ChatClient implements Runnable{
             try {
                 Thread.sleep(2000);
                 Log.e("ChatClient","正在运行接收消息");
-                getmessage=receivemessage();
-                massage massage=new massage(getmessage,1,"jfbiuawvfuiwaf");
+                getmessage=receivemessage();//获取消息
+                Gson gson = new GsonBuilder().create();
+                Message massage = gson.fromJson(getmessage, Message.class); // 转换
                 new Handler(Looper.getMainLooper()).post(() -> {
                     messages.add(massage);
                     massageadpter.notifyDataSetChanged();
                     recyclerView.scrollToPosition(messages.size() - 1);
+                    chat_sqlite chat_sqlite = new chat_sqlite(context);
+                    chat_sqlite.insertMessage(massage);
                 });
 
                 Log.e("ChatClient","获取到的消息为:"+getmessage);

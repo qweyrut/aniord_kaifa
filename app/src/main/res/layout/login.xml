@@ -17,7 +17,7 @@
 
     <EditText
 
-        android:id="@+id/username"
+        android:id="@+id/username123"
         android:layout_width="369dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/iv_1"
@@ -27,19 +27,19 @@
         android:textColor="@color/white"
         android:textColorHint="@color/white" />
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/password123"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:lines="1"
         android:hint="Pswd"
         android:inputType="textPassword"
         android:layout_marginTop="10dp"
-        android:layout_below="@id/username"
+        android:layout_below="@id/username123"
         android:textColorHint="@color/white"
         android:textColor="@color/white"/>
     <LinearLayout
         android:id="@+id/ly_1"
-        android:layout_below="@id/password"
+        android:layout_below="@id/password123"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -47,7 +47,7 @@
             android:id="@+id/cb_rm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/password"
+            android:layout_below="@id/password123"
             android:text="记住密码"
             android:textColor="@color/white"
             android:layout_gravity="left"

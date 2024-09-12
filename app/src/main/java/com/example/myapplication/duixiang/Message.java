@@ -1,5 +1,7 @@
 package com.example.myapplication.duixiang;
 
+import com.example.myapplication.Application1;
+
 public class Message {
     private String geterId;//消息id,自动添加，非网名
 
@@ -18,7 +20,14 @@ public class Message {
         this.senderId = senderId;
         this.content = content;
     }
-
+    public int getLayouttype(){//判断
+        if (senderId.equals(Application1.senduid)){
+            return 0;
+        }
+        else {
+            return  1;
+        }
+    }
     // Getters
     public String getSenderId() { return senderId; }
     public String getContent() { return content; }

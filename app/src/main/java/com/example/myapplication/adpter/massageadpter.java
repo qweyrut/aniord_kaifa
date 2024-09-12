@@ -10,13 +10,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.duixiang.Message;
 import com.example.myapplication.duixiang.massage;
 
 import java.util.List;
 
 public class massageadpter extends RecyclerView.Adapter <massageadpter.massageadpterviewholder>{
-    public List<massage> massageList;
-    public massageadpter(List<massage> massageList){//传送数据
+    public List<Message> massageList;
+    public massageadpter(List<Message> massageList){//传送数据
         this.massageList=massageList;
     }
 
@@ -31,13 +32,15 @@ public class massageadpter extends RecyclerView.Adapter <massageadpter.massagead
         return new massageadpterviewholder(view);
     }
     public int getItemViewType(int position) {
+
+
         return massageList.get(position).getLayouttype();//修改逻辑
         //receiver_Id来进行判断
     }
 
     public void onBindViewHolder(@NonNull massageadpterviewholder holder, int position) {
-        massage massage=massageList.get(position);
-        holder.messageTextView.setText(massage.getMassage());
+        Message massage=massageList.get(position);
+        holder.messageTextView.setText(massage.getContent());
     }
     @Override
     public int getItemCount() {
