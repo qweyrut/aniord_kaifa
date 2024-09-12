@@ -20,7 +20,7 @@ import java.net.Socket;
 import java.util.Scanner;
 
 //我的主页//
-public class fragment_me extends Fragment implements Runnable{
+public class fragment_me extends Fragment {
     EditText ceshi1;
     Button ceshi;
     public static Socket socket;
@@ -35,20 +35,4 @@ public class fragment_me extends Fragment implements Runnable{
         return view;
     }
 
-    @Override
-    public void run() {
-
-        try {
-            DataInputStream dis = new DataInputStream(socket.getInputStream());
-            while (true) {
-                String msg = dis.readUTF();
-                if (msg.equals("exit")){
-                    break;
-                }
-                System.out.println("来自服务器端的消息"+msg);
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
 }
