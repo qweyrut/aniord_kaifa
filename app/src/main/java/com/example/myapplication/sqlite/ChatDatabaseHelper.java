@@ -33,7 +33,7 @@ public class ChatDatabaseHelper extends SQLiteOpenHelper {//这个数据库存�
     }
     public boolean Search(String sender_id, String receiver_id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query("messages", null, null, null, null, null, null);
+        Cursor cursor = db.query("conversations", null, null, null, null, null, null);
 
         if (cursor.moveToFirst()) {
             do {

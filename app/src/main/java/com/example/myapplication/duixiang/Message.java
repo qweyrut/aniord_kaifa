@@ -22,10 +22,10 @@ public class Message {
     }
     public int getLayouttype(){//判断
         if (senderId.equals(Application1.senduid)){
-            return 0;
+            return 1;
         }
         else {
-            return  1;
+            return  0;
         }
     }
     // Getters

@@ -52,15 +52,8 @@ public class search_for extends Fragment implements Runnable{
                 }
             }
         });
-
-
-
-
-
-
         return view;
     }
-
     @Override
     public void run() {
 

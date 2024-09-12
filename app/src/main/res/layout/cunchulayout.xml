@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/duihuakuang"
+    android:id="@+id/cunchu_list">
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/user">
+    </ImageView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="70dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:text="用户名:"
+                android:textSize="18dp">
+            </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:textSize="18dp"
+                android:layout_marginLeft="10dp"
+                android:text="用户的名字"
+                android:id="@+id/cunchuname">
+            </TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginLeft="15dp"
+                android:text="用户id:"
+                android:textSize="14dp"
+                >
+            </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:textSize="14dp"
+                android:layout_marginLeft="10dp"
+                android:text="用户的id"
+                android:id="@+id/cunchuuid">
+            </TextView>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>

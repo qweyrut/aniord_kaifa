@@ -58,8 +58,6 @@ public class main_interface extends AppCompatActivity implements View.OnClickLis
         fragment_me_icon=findViewById(R.id.fragment_me_icon);
         fragment_me_icon.setOnClickListener(this);
         context=this;
-        Intent intent=new Intent(this, Serverservice.class);
-        startService(intent);
         //绑定按钮事件
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED ||
                 ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_NETWORK_STATE) != PackageManager.PERMISSION_GRANTED) {

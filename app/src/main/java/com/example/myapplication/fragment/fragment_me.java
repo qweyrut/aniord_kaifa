@@ -1,5 +1,6 @@
 package com.example.myapplication.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.myapplication.Application1;
 import com.example.myapplication.R;
 
 import java.io.DataInputStream;
@@ -25,12 +27,13 @@ public class fragment_me extends Fragment {
     Button ceshi;
     public static Socket socket;
     static boolean issend=false;
-
+Context context;
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_me, container, false);
-
+        Application1 application1 =(Application1)getActivity().getApplicationContext() ;
+        Context context1 =application1.getApplicationContext();
         return view;
     }
 

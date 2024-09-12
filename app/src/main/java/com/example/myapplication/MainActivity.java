@@ -14,11 +14,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.myapplication.Service.Serverservice;
 import com.example.myapplication.adpter.massageadpter;
 import com.example.myapplication.duixiang.Message;
-import com.example.myapplication.duixiang.massage;
 import com.example.myapplication.socket.ChatClient;
 import com.example.myapplication.sqlite.ChatDatabaseHelper;
+import com.example.myapplication.sqlite.chat_sqlite;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     com.example.myapplication.adpter.massageadpter massageadpter;
     EditText massageedit;
     Button sendmassage;
-    Button startservice;
     String sendmessage="";
     ChatClient chatClient;
     String ip;//获取IP地址
@@ -47,20 +47,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         recyclerView=findViewById(R.id.xiaoxiliebiao);//消息列表
         massageedit=findViewById(R.id.massageedit);//发送消息栏
         sendmassage=findViewById(R.id.sendmassage);//发送消息按钮
-        startservice=findViewById(R.id.startservice);//开启服务器端
         gukename=findViewById(R.id.gukename);
-        startservice.setOnClickListener(this);
         sendmassage.setOnClickListener(this);
         Intent intent=getIntent();
         bundle=intent.getExtras();
         ip=bundle.getString("ip");
         name=bundle.getString("name");
         nameid=bundle.getString("nameid");
-
+        Intent intent1=new Intent(this, Serverservice.class);
+        startService(intent1);
         ChatDatabaseHelper dbhp = new ChatDatabaseHelper(this);
-        dbhp.insertConversation(Application1.getname,Application1.getuid,Application1.senduid);
-
+        dbhp.insertConversation(Application1.getname,Application1.getuid,Application1.senduid);//插入
         gukename.setText(name);
+        chat_sqlite sqlite=new chat_sqlite(this);
+        messages=sqlite.fetchMessages(Application1.getuid,Application1.senduid);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         massageadpter=new massageadpter(messages);
         recyclerView.setAdapter(massageadpter);

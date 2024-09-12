@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.Application1;
 import com.example.myapplication.adpter.massageadpter;
 import com.example.myapplication.duixiang.Message;
-import com.example.myapplication.duixiang.massage;
 import com.example.myapplication.duixiang.udp;
 import com.example.myapplication.sqlite.chat_sqlite;
 import com.google.gson.Gson;

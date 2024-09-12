@@ -6,62 +6,23 @@
     android:orientation="vertical"
     android:background="@color/danhuise"
     tools:context=".fragment.interface_two">
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:background="@color/teal_200"-->
-<!--        android:layout_height="50dp">-->
-<!--        <ImageView-->
-<!--            android:layout_width="30dp"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:src="@drawable/fanhui">-->
-<!--        </ImageView>-->
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:text="你的名字"-->
-<!--            android:textSize="25dp"-->
-<!--            android:id="@+id/gukename"-->
-<!--            android:gravity="center">-->
-<!--        </TextView>-->
-<!--    </LinearLayout>-->
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="400dp"-->
-<!--        android:id="@+id/xiaoxiliebiao">-->
-<!--    </androidx.recyclerview.widget.RecyclerView>-->
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="50dp">-->
-<!--        <LinearLayout-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="50dp">-->
-<!--            <EditText-->
-<!--                android:layout_width="300dp"-->
-<!--                android:layout_height="40dp"-->
-<!--                android:layout_marginLeft="10dp"-->
-<!--                style="@style/CustomTextStyle"-->
-<!--                android:layout_marginTop="5dp"-->
-<!--                android:layout_marginBottom="5dp"-->
-<!--                android:layout_marginRight="10dp"-->
-<!--                android:id="@+id/massageedit"-->
-<!--                >-->
-<!--            </EditText>-->
-<!--        </LinearLayout>-->
-<!--        <Button-->
-<!--            android:layout_width="wrap_content"-->
-<!--            style="@style/fasonganniu"-->
-<!--            android:layout_marginTop="5dp"-->
-<!--            android:layout_marginBottom="5dp"-->
-<!--            android:text="发送"-->
-<!--            android:id="@+id/sendmassage"-->
-<!--            android:layout_height="40dp">-->
-<!--        </Button>-->
-<!--    </LinearLayout>-->
-<!--    <Button-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:id="@+id/startservice"-->
-<!--        android:text="开启服务端"-->
-<!--        >-->
-<!--    </Button>-->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="聊天记录列表"
+            android:textSize="25dp"
+            android:id="@+id/gukename"
+            android:gravity="center">
+        </TextView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/huifanglist">
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+
+
+
 </LinearLayout>

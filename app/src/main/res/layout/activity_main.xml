@@ -62,12 +62,6 @@
             android:layout_height="40dp">
         </Button>
     </LinearLayout>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/startservice"
-        android:text="开启服务端"
-        tools:ignore="MissingConstraints">
-    </Button>
+
 
 </LinearLayout>
