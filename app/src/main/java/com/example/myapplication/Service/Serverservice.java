@@ -36,11 +36,11 @@ public class Serverservice extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        try {
-            chatServer.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//            chatServer.close();
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
     @Override

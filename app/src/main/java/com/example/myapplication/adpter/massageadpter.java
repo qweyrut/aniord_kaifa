@@ -31,7 +31,8 @@ public class massageadpter extends RecyclerView.Adapter <massageadpter.massagead
         return new massageadpterviewholder(view);
     }
     public int getItemViewType(int position) {
-        return massageList.get(position).getLayouttype();
+        return massageList.get(position).getLayouttype();//修改逻辑
+        //receiver_Id来进行判断
     }
 
     public void onBindViewHolder(@NonNull massageadpterviewholder holder, int position) {

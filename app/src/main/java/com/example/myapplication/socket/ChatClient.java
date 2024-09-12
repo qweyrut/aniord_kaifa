@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChatClient implements Runnable{
-    public   static   Socket socket;//获取服务端的socket实例
+    public  static   Socket socket;//获取服务端的socket实例
     public  static int port;
     public static  String ip;
     public  static String getmessage;//取得的消息
