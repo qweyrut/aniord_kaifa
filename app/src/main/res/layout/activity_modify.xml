@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.myapplication.fragment.fragment_me">
-
+    tools:context=".ModifyActivity">
+    <!-- Toolbar -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,44 +18,33 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="我"
+            android:text="修改个人信息"
             android:textColor="@android:color/white"
             android:textSize="20sp" />
 
     </LinearLayout>
 
-    <!-- Profile Section -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:orientation="horizontal"
+        android:gravity="center"
         android:padding="16dp">
 
         <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:src="@drawable/ic_profile" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="16dp"
-            android:text="名字"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:id="@+id/oldname"/>
 
     </LinearLayout>
 
-    <!-- Divider -->
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:background="#D0D0D0" />
 
-    <!-- Menu Items -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -70,27 +59,50 @@
             android:padding="16dp"
             android:gravity="center_vertical">
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_modify" />
-
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginStart="16dp"
-                android:text="修改个人信息"
-                android:textSize="16sp" />
+                android:text="用户名"
+                android:textSize="20sp" />
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_arrow_right"
-                android:id="@+id/modify"/>
+            <EditText
+                android:enabled="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="名字"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:id="@+id/name_two"/>
+
         </LinearLayout>
 
-        <!-- Divider -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="密码"
+                android:textSize="20sp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="******"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:id="@+id/password_two"/>
+
+        </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -106,12 +118,13 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="退出登录"
-                android:id="@+id/btn_exit">
+                android:text="确定"
+                android:id="@+id/btn_ok">
 
             </Button>
         </LinearLayout>
 
     </LinearLayout>
+
 
 </LinearLayout>

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
 
 public class Login_inf extends SQLiteOpenHelper {
@@ -37,6 +38,23 @@ public class Login_inf extends SQLiteOpenHelper {
 
         db.close(); // 关闭数据库
         return uid; // 返回 UID 或 null
+    }
+    public void updatePasswordByUsername(String username, String newPassword) {//通过name更新password
+        SQLiteDatabase db = this.getWritableDatabase();
+        String UPDATE_PASSWORD = "UPDATE users SET password = ? WHERE username = ?";
+
+        SQLiteStatement statement = db.compileStatement(UPDATE_PASSWORD);
+        statement.bindString(1, newPassword);
+        statement.bindString(2, username);
+
+        int rowsAffected = statement.executeUpdateDelete();
+        if (rowsAffected > 0) {
+            Log.d("Database", "Password updated successfully for user: " + username);
+        } else {
+            Log.d("Database", "No user found with username: " + username);
+        }
+
+        db.close();
     }
 
     @Override

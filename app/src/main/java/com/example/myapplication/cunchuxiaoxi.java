@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.example.myapplication.adpter.massageadpter;
@@ -36,6 +37,12 @@ public class cunchuxiaoxi extends AppCompatActivity {
         senduid=bundle.getString("Sender_Id");
         getuid=bundle.getString("Receiver_Id");
         imageView=findViewById(R.id.danhui1);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         chat_sqlite chat_sqlite1=new chat_sqlite(this);
         messages=chat_sqlite1.fetchMessages(getuid,senduid);
         xiaoxi=new massageadpter(messages);

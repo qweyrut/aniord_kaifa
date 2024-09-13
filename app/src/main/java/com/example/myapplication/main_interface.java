@@ -52,9 +52,6 @@ public class main_interface extends AppCompatActivity implements View.OnClickLis
 
         fragment_two_icon=findViewById(R.id.fragment_two_icon);
         fragment_two_icon.setOnClickListener(this);
-
-        fragment_three_icon=findViewById(R.id.fragment_three_icon);
-        fragment_three_icon.setOnClickListener(this);
         fragment_me_icon=findViewById(R.id.fragment_me_icon);
         fragment_me_icon.setOnClickListener(this);
         context=this;
@@ -90,13 +87,6 @@ public class main_interface extends AppCompatActivity implements View.OnClickLis
             FragmentTransaction transaction = fragmentManager.beginTransaction();
             transaction.setReorderingAllowed(true);
             transaction.replace(R.id.fragment_manage, interface_two, null);
-            transaction.commit();
-        }
-        else if (view.getId()==R.id.fragment_three_icon) {
-            FragmentManager fragmentManager=getSupportFragmentManager();
-            FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.setReorderingAllowed(true);
-            transaction.replace(R.id.fragment_manage, interface_three, null);
             transaction.commit();
         }
         else if (view.getId()==R.id.fragment_me_icon) {

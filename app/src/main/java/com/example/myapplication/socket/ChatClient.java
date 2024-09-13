@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChatClient implements Runnable{
+    //聊天客户端
     public  static   Socket socket;//获取服务端的socket实例
     public  static int port;
     public static  String ip;
@@ -104,7 +106,7 @@ public class ChatClient implements Runnable{
 
                 Log.e("ChatClient","获取到的消息为:"+getmessage);
             }catch (Exception e){
-                throw new RuntimeException(e);
+                Toast.makeText(context, "服务器关闭", Toast.LENGTH_SHORT).show();
             }
         }
     }

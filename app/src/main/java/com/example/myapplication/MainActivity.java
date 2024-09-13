@@ -12,7 +12,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapplication.Service.Serverservice;
 import com.example.myapplication.adpter.massageadpter;
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String nameid;//获取对方的uid
     Thread interface_two;
     TextView gukename;
+    ImageView imageView;
     Bundle bundle;
     List<Message> messages=new ArrayList<>();
 
@@ -48,6 +51,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         massageedit=findViewById(R.id.massageedit);//发送消息栏
         sendmassage=findViewById(R.id.sendmassage);//发送消息按钮
         gukename=findViewById(R.id.gukename);
+        imageView=findViewById(R.id.fanhui);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Serverservice.class);
+                stopService(intent);
+                finish();
+            }
+        });
         sendmassage.setOnClickListener(this);
         Intent intent=getIntent();
         bundle=intent.getExtras();
@@ -60,7 +72,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         dbhp.insertConversation(Application1.getname,Application1.getuid,Application1.senduid);//插入
         gukename.setText(name);
         chat_sqlite sqlite=new chat_sqlite(this);
+
         messages=sqlite.fetchMessages(Application1.getuid,Application1.senduid);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         massageadpter=new massageadpter(messages);
         recyclerView.setAdapter(massageadpter);
@@ -75,7 +89,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             sendmessage= massageedit.getText().toString();
             massageedit.setText("");//编辑栏清空
             Log.e("interface_two",sendmessage);
-            new Thread(this::sendMessageAndClear).start();
+            if (sendmassage.equals("")){
+                Toast.makeText(MainActivity.this,"消息不能为空", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                new Thread(this::sendMessageAndClear).start();
+            }
+
         }
     }
     private void sendMessageAndClear() {

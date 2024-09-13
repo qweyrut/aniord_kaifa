@@ -17,6 +17,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class SendBroadcast implements Runnable {
+    //发送广播
     private static final String BROADCAST_ADDRESS = "255.255.255.255"; // 广播地址
     private static final int PORT = 12354; // 端口号
     private static String MESSAGE;

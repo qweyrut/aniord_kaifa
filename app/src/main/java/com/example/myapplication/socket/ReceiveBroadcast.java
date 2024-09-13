@@ -15,6 +15,7 @@ import java.net.InetAddress;
 import java.util.List;
 
 public class ReceiveBroadcast implements Runnable {
+    //接受广播
     private static final int PORT = 12354; // 端口号
     private MulticastSocket socket;
     private List<udp_user> list;

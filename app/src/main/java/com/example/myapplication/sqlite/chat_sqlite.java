@@ -49,7 +49,7 @@ public class chat_sqlite extends SQLiteOpenHelper {
                 @SuppressLint("Range") String receiver = cursor.getString(cursor.getColumnIndex("receiver_id"));
                 @SuppressLint("Range") String content = cursor.getString(cursor.getColumnIndex("content"));
                 // 创建 Message 对象并添加到列表中
-                messages.add(new Message(sender, receiver, content));
+                messages.add(new Message(receiver, sender, content));
             } while (cursor.moveToNext());
         }
         cursor.close();

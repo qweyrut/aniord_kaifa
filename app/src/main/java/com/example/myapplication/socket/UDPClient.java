@@ -7,6 +7,7 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 
 public class UDPClient implements Runnable{
+    //用于传输发送连接请求
 
     private static final int SERVER_PORT = 9876; // 服务器端口
     udp message;

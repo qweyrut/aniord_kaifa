@@ -20,14 +20,23 @@ public class Message {
         this.senderId = senderId;
         this.content = content;
     }
-    public int getLayouttype(){//判断
+    public int getLayouttype(){//用于查看信息界面
         if (senderId.equals(Application1.senduid)){
-            return 1;
+            return 0;
         }
         else {
-            return  0;
+            return  1;
         }
     }
+    public int getLayouttype1(){//用于聊天界面
+        if (senderId.equals(Application1.senduid)){
+            return 0;
+        }
+        else {
+            return  1;
+        }
+    }
+
     // Getters
     public String getSenderId() { return senderId; }
     public String getContent() { return content; }
